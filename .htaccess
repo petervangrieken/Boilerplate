@@ -1,0 +1,35 @@
+RewriteEngine on  
+RewriteCond %{REQUEST_FILENAME} !-d  
+RewriteCond %{REQUEST_FILENAME}\.html -f  
+RewriteRule ^(.*)$ $1.html
+
+
+#for html, php
+AddDefaultCharset UTF-8
+#for css, js
+AddType 'text/css; charset=UTF-8' css
+AddType 'application/x-javascript; charset=UTF-8' js
+
+# cache images/pdf docs for 100 days
+<FilesMatch "\.(ico|pdf|jpg|jpeg|png|gif)$">
+  #Header set Cache-Control "max-age=8640000, public, must-revalidate"
+  #Header unset Last-Modified
+  #Header unset ETag
+  #FileETag None
+</FilesMatch>
+ 
+# cache html/htm/xml/txt files for 2 hours
+<FilesMatch "\.(html|htm|xml|txt|xsl)$">
+  #Header set Cache-Control "max-age=7200, must-revalidate"
+</FilesMatch>
+
+# cache css/jss files for 10 days
+<FilesMatch "\.(css|js)$">
+  #Header set Cache-Control "max-age=864000, must-revalidate"
+  #Header unset ETag
+  #FileETag None
+</FilesMatch>
+
+<ifmodule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+</ifmodule>
