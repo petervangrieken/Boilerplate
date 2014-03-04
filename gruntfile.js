@@ -16,11 +16,8 @@ module.exports = function(grunt) {
 
         watch: {
             css: {
-                files: ['css/sass/*.scss'],
-                tasks: ['sass'],
-                options: {
-                    spawn: false,
-                }
+                files: '**/*.scss',
+                tasks: ['sass']
             }
         }
 
@@ -30,6 +27,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-    grunt.registerTask('default', ['sass', 'watch']);
+    grunt.registerTask('default', ['watch']);
 
 };
