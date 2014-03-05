@@ -8,25 +8,38 @@ module.exports = function(grunt) {
         sass: {
             dist: {
                 options: {
-                    style: 'compressed',
-                    sourcemap: 'true'
+                    style: 'nested'
                 },
                 files: {
-                    'css/style.css': 'css/sass/style.scss'
+                    'src/css/style.css': 'src/css/sass/style.scss'
                 }
-            } 
+            }
         },
-
+        cssmin: {
+            combine: {
+                files: {
+                    './public/css/style.min.css': ['src/css/style.css']
+                }
+            }
+        },
+        imagemin: {
+            dynamic: {
+              files: [{
+                expand: true,
+                cwd: 'src/images',
+                src: ['**/*.{png,jpg,gif}'],
+                dest: 'public/images'
+              }]
+            }
+        },
         watch: {
             css: {
                 files: '**/*.scss',
-                tasks: ['sass']
+                tasks: ['sass', 'cssmin', 'imagemin']
             }
         }
 
     });
 
-    // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-    grunt.registerTask('default', ['watch']);
-
+    grunt.registerTask('default', ['imagemin','watch']);
 };
