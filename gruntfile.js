@@ -13,12 +13,14 @@ module.exports = function(grunt) {
                 files: {
                     'src/css/style.css': 'src/css/sass/style.scss'
                 }
-            }
-        },
-        cssmin: {
-            combine: {
+            },
+            build: {
+                options: {
+                    style: 'compressed',
+                    sourcemap: 'true'
+                },
                 files: {
-                    'public/css/style.min.css': ['src/css/style.css']
+                    'public/css/style.min.css': 'src/css/sass/style.scss'
                 }
             }
         },
@@ -42,7 +44,7 @@ module.exports = function(grunt) {
         watch: {
             css: {
                 files: ['**/*.scss'],
-                tasks: ['sass', 'cssmin', 'imagemin']
+                tasks: ['sass:dist', 'sass:build']
             },
             html: {
                 files: ['src/*.html'],

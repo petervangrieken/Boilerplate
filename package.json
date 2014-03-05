@@ -6,7 +6,6 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-sass": "~0.7.2",
     "load-grunt-tasks": "~0.4.0",
-    "grunt-contrib-cssmin": "^0.8.0",
     "grunt-bake": "^0.3.8",
     "grunt-contrib-imagemin": "~0.4.0"
   }
