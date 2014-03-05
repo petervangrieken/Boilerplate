@@ -32,10 +32,21 @@ module.exports = function(grunt) {
               }]
             }
         },
+        bake: {
+            build: {
+                files: {
+                    "public/index.html": "src/index.html"
+                }
+            }
+        },
         watch: {
             css: {
-                files: '**/*.scss',
+                files: ['**/*.scss'],
                 tasks: ['sass', 'cssmin', 'imagemin']
+            },
+            html: {
+                files: ['src/*.html'],
+                tasks: ['bake']
             }
         }
 
