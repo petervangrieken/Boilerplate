@@ -5,7 +5,7 @@ This is my personal boilerplate for new projects.
 
 ## CSS
 
-Is use the following organization for my styles:
+I use the following organization for my styles:
 
 1. SETUP............Settings, tools, mixins, etc.
 2. GENERIC..........normalize.css, reset, shared styles, etc.
