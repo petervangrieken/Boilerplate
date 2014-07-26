@@ -50,9 +50,21 @@ module.exports = function(grunt) {
                 files: ['src/*.html'],
                 tasks: ['bake']
             }
+        },
+        connect: {
+            server: {
+                options: {
+                    port: 9000,
+                    hostname: '0.0.0.0',
+                    base: './public',
+                    open: true
+                }
+            }
         }
+
 
     });
 
     grunt.registerTask('default', ['imagemin','watch']);
+    grunt.registerTask('serve', ['connect:server','default']);
 };
